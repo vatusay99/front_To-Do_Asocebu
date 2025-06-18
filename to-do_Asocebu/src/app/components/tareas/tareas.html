@@ -14,16 +14,19 @@
            
             @if(listaTareas.length > 0){
                 <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between" *ngFor="let t of listaTareas; let i = index">
-                        <span (click)="actualizarTarea(t, i)">
-                            <i [ngClass]="t.tarea? 'fa-solid fa-circle-check': 'fa-regular fa-circle'"></i>
-                            <!--<i class="fa-regular fa-circle"></i>
-                            <i class="fa-solid fa-circle-check"></i>-->
-                        </span>
-                        {{t.nombre}}
-                        <span class="text-danger" (click)="eliminarTarea(i)">
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
+                    <li class="list-group-item" *ngFor="let t of listaTareas; let i = index">
+                        <div class="d-flex justify-content-between" [ngClass]="t.tarea? 'text-success p-1 border border-success redonder':''">
+                            <span (click)="actualizarTarea(t, i)">
+                                <i [ngClass]="t.tarea? 'fa-solid fa-circle-check': 'fa-regular fa-circle'"></i>
+                                <!--<i class="fa-regular fa-circle"></i>
+                                <i class="fa-solid fa-circle-check"></i>-->
+                            </span>
+                            
+                            {{t.nombre}}
+                            <span class="text-danger" (click)="eliminarTarea(i)">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                        </div>
                     </li>
                 </ul>
             }
