@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <input type="text" class="form-control form-control-lg mt-5" placeholder="Ingrese titulo de tarea"
+                [(ngModel)]="nombreTareas" (keyup.enter)="guardarTarea()">
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mt-3">
+            @if (listaTareas.length == 0) {
+                 <div class="card mb-3">
+                    <h6 class="p-3 text-center text-success">No existen tareas asignadas</h6>
+                </div>
+            }
+           
+            @if(listaTareas.length > 0){
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between" *ngFor="let t of listaTareas; let i = index">
+                        <span (click)="actualizarTarea(t, i)">
+                            <i [ngClass]="t.tarea? 'fa-solid fa-circle-check': 'fa-regular fa-circle'"></i>
+                            <!--<i class="fa-regular fa-circle"></i>
+                            <i class="fa-solid fa-circle-check"></i>-->
+                        </span>
+                        {{t.nombre}}
+                        <span class="text-danger" (click)="eliminarTarea(i)">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </li>
+                </ul>
+            }
+            
+        </div>
+    </div>
+</div>
